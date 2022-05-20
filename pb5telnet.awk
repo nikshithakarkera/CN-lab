@@ -23,7 +23,7 @@ recievrd++;
 }
 }
 END{
-printf"\n Number of packets dropped:%d\n",count;
+printf"\n Number of packets dropped:%d\n",$11;
 printf"\n Packet sent from source node1 is:%d\n",sent1;
 printf"\n Packet sent from source node2 is:%d\n",sent2;
 printf"\n Packet recieved:%d",received;sent=sent1+sent2;
