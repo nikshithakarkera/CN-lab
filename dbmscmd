@@ -1,0 +1,74 @@
+create table BRANCH(
+Branchid char(20) primary key,
+Branchname varchar(30) not null,
+HoD varchar(50) not null);
+
+
+
+create table STUDENT(
+USN varchar(20) primary key,
+Name varchar(50) not null,
+address varchar(50) not null,
+Branchid char(20),
+Sem int(10),
+foreign key(Branchid) references Branch(Branchid));
+
+create table AUTHOR(
+Authorid int(10) primary key,
+Authorname varchar(50) not null,
+Country char(10),
+Age int(10));
+
+create table BOOK(
+Bookid varchar(20) primary key,
+Bookname varchar(50) not null,
+Authorid int(10),
+Publisher char(20),
+Branchid char(20),
+foreign key(Branchid) references Branch(Branchid),
+foreign key(Authorid)reference Author(Authorid));
+
+
+create table BORROW(
+USN varchar(20) ,
+Bookid char(20),
+Borrowed_date date,
+primary key(USN,Bookid),
+foreign key(USN) references Student(USN),
+foreign key(Bookid) 
+
+
+
+insert into BRANCH values('B1','MCA','DR.Vandana B.S.');
+insert into BRANCH values('B2','MBA','Prof.Shekar Iyer');
+insert into BRANCH values('B3','Mech','DR.Vandana');
+insert into BRANCH values('B4','AIML','DR.Iyer');
+insert into BRANCH values('B5','CS','Dr.Shailesh');
+
+insert into STUDENT values('4VP21MC066','Anil','Kabaka','B1','1');
+insert into STUDENT values('4VP21MC016','Chethan','Uppinangady','B2','2');
+insert into STUDENT values('4VP21MC026','Nikshitha','Perne','B3','4');
+insert into STUDENT values('4VP21MB017','Chaithra','Puttur','B4','4');
+insert into STUDENT values('4VP21CS028','Karthik','Mangalore','B5','5');
+
+insert into AUTHOR values(1,'Ramez Elmasri','Arlinhton',51);
+insert into AUTHOR values(2,'Baidyanth Mishra','India',52);
+insert into AUTHOR values(2,'Ellis Horowits','US',41);
+insert into AUTHOR values(3,'Ellis Horowits','US',41);
+insert into AUTHOR values(4,'Deepak Kehamani','India',39);
+insert into AUTHOR values(5,'Yunus','Japan',34);
+
+
+insert into BOOK values('BK1','DBMS',1,'PEARSON','B1');
+insert into BOOK values('BK2','RESEARCH METHODOLOGY',2,'PEARSON','B2');
+insert into BOOK values('BK3','DATA STRUCTURE',3,'Mr Graw','B3');
+insert into BOOK values('BK4','ALGORITHM',3,'Mr Graw','B3');
+insert into BOOK values('BK5','Artificial Intelligence',4,'Mr Graw','B4');
+
+
+insert into Borrow values('4VP21MC066','BK1','2022-6-21');
+insert into Borrow values('4VP21MC016','BK2','2021-3-16');
+insert into Borrow values('4VP21MC026','BK3','2021-3-16');
+insert into Borrow values('4VP21MC016','BK4','2021-3-16')
+insert into Borrow values('4VP21MB017','BK4','2021-3-16')
+
